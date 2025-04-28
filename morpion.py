@@ -4,3 +4,4 @@ print(grille_morpion)
 
 def afficher_test():
     print('hello')
+    print('hello')
