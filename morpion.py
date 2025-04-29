@@ -8,14 +8,12 @@ while True:
             print(valeur, item)
 
 
-    def jouer_coup():
-        joueur = 'X'
+    def jouer_coup(joueur):
         colonne = int(input('choisir une colonne: 1, 2, 3 ?'))
         ligne = input('choisir ligne ? A, B, C')
         if verif_coup(ligne,colonne) == 1:
             grille_morpion[ligne][colonne -1] = joueur
             afficher_grille()
-        
 
 
     def verif_coup(ligne, colonne):
@@ -35,25 +33,40 @@ while True:
         case_rempli = 0
         for item in grille_morpion:
             for i in range(3):
-                if grille_morpion[item][i] == "X":
+                if grille_morpion[item][i] == "X" or grille_morpion[item][i] == "O":
                     case_rempli += 1
+                
         if case_rempli == 9:
             print('grille rempli')
             return 1
 
 
-
-    jouer_coup()
-    est_pleine()       
-    
-    def est_gagnante():
+    def est_gagnante(joueur):
         for item in grille_morpion:
-            if grille_morpion[item][0] == grille_morpion[item][1] == grille_morpion[item][2] == 'X':
+            if grille_morpion[item][0] == grille_morpion[item][1] == grille_morpion[item][2] == joueur:
                 print(f"gagné ligne {item}")
+                return 1
             
         for i in range(3):
-            if grille_morpion['A'][i] == grille_morpion['B'][i] == grille_morpion['C'][i] == 'X':
+            if grille_morpion['A'][i] == grille_morpion['B'][i] == grille_morpion['C'][i] == joueur:
                 print(f'gagné colonne {i+1}')
+        
+        if grille_morpion['A'][0] == grille_morpion['B'][1] == grille_morpion['C'][2] == joueur:
+            print('diagonale')
+        
+        if grille_morpion['A'][2] == grille_morpion['B'][1] == grille_morpion['C'][0] == joueur:
+            print('diagonale')
 
 
-    est_gagnante()
+    jouer_coup("X")
+    if est_gagnante('X') == 1:
+        break
+    if est_pleine() == 1:
+        break     
+    jouer_coup("O")
+    if est_gagnante('O') == 1:
+        break
+    if est_pleine() == 1:
+        break     
+
+    
