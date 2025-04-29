@@ -1,4 +1,4 @@
-grille_morpion = {"A":["X","_","_"],"B":["_","_","_"],"C":["_","_","_"]}
+grille_morpion = {"A":["_","_","_"],"B":["_","_","_"],"C":["_","_","_"]}
 
 while True:
 
@@ -32,5 +32,14 @@ while True:
 
     jouer_coup()
 
-    
+    def est_gagnante():
+        for item in grille_morpion:
+            if grille_morpion[item][0] == grille_morpion[item][1] == grille_morpion[item][2] == 'X':
+                print(f"gagné ligne {item}")
+            
+        for i in range(3):
+            if grille_morpion['A'][i] == grille_morpion['B'][i] == grille_morpion['C'][i] == 'X':
+                print(f'gagné colonne {i+1}')
 
+
+    est_gagnante()
