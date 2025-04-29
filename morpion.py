@@ -1,4 +1,4 @@
-grille_morpion = {"A":["X","_","_"],"B":["_","_","_"],"C":["_","_","_"]}
+grille_morpion = {"A":["X","X","X"],"B":["X","X","X"],"C":["X","_","_"]}
 
 while True:
 
@@ -30,7 +30,20 @@ while True:
         else : 
             return 1
 
-    jouer_coup()
 
+    def est_pleine():
+        case_rempli = 0
+        for item in grille_morpion:
+            for i in range(3):
+                if grille_morpion[item][i] == "X":
+                    case_rempli += 1
+        if case_rempli == 9:
+            print('grille rempli')
+            return 1
+
+
+
+    jouer_coup()
+    est_pleine()       
     
 
