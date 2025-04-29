@@ -12,7 +12,9 @@ while True:
         joueur = 'X'
         colonne = int(input('choisir une colonne: 1, 2, 3 ?'))
         ligne = input('choisir ligne ? A, B, C')
-        grille_morpion[ligne][colonne -1] = joueur
+        if verif_coup(ligne,colonne) == 1:
+            grille_morpion[ligne][colonne -1] = joueur
+            afficher_grille()
         
 
 
@@ -26,13 +28,9 @@ while True:
         if grille_morpion[ligne][colonne -1] != "_":
             print("case deja joué")
         else : 
-            afficher_grille()
+            return 1
 
-
-
-
-    verif_coup("A",2)
-    break
+    jouer_coup()
 
     
 
